@@ -1,11 +1,8 @@
 name: scrape
 
 on:
-  # Every 15 min, 03:00–20:45 UTC = covers 06:00–21:00 Prague in both CET and CEST.
-  # GitHub may delay or skip scheduled runs; the CSV stores the actual time of each run.
-  schedule:
-    - cron: "*/15 3-20 * * *"
-  # Manual run, or an external trigger (e.g. cron-job.org) via the GitHub API.
+  # Triggered every 15 min, 06:00–20:45 Prague, by cron-job.org via the GitHub API.
+  # GitHub's own schedule trigger was too unreliable (4 runs in ~24 h instead of ~70).
   workflow_dispatch:
 
 permissions:

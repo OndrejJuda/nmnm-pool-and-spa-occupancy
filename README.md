@@ -2,7 +2,7 @@
 
 Sledování obsazenosti bazénu a wellness v [Městských lázních Nové Město na Moravě](https://lazne.nmnm.cz/).
 
-GitHub Actions každých 15 minut (06:00–21:00 pražského času) stáhne tabulku návštěvnosti z `https://lazne.nmnm.cz/data/lazne/navstevnost-homepage.php` a připíše řádek do `data/YYYY-MM.csv`.
+GitHub Actions workflow, spouštěný přes cron-job.org každých 15 minut (06:00–20:45 pražského času), stáhne tabulku návštěvnosti z `https://lazne.nmnm.cz/data/lazne/navstevnost-homepage.php` a připíše řádek do `data/YYYY-MM.csv`.
 
 ## Data
 
@@ -21,13 +21,15 @@ Hodnota je okamžitý počet lidí uvnitř. Mimo provozní dobu jsou nuly — fi
 
 ## Spolehlivost
 
-Plánované běhy GitHubu se zpožďují a občas vypadnou. Proto 15min interval a ukládání skutečného času. Kdyby výpadků bylo moc, workflow jde spouštět externě (např. cron-job.org) přes `workflow_dispatch`:
+Vestavěný `schedule` trigger GitHubu byl nepoužitelný (za ~24 h 4 běhy místo ~70, zpoždění přes hodinu), proto workflow spouští cron-job.org přes `workflow_dispatch`:
 
 ```
 POST https://api.github.com/repos/OndrejJuda/nmnm-pool-and-spa-occupancy/actions/workflows/scrape.yml/dispatches
 Authorization: Bearer <fine-grained PAT s Actions: write>
 {"ref": "main"}
 ```
+
+Token vyprší 20.01.2027 — pak je potřeba vygenerovat nový a vyměnit ho v cron-job.org.
 
 ## Lokálně
 
