@@ -1,4 +1,4 @@
-timestamp,weekday,hour,areal,bazen,fitness,wellness,koupele,masaze,solarium
+timestamp,weekday,hour,areal,bazen,fitness,wellness,koupele,masaze,solarium,stav,stale
 2026-11-01T06:00:54+01:00,7,6,0,0,0,0,0,0,0
 2026-11-01T06:15:26+01:00,7,6,0,0,0,0,0,0,0
 2026-11-01T06:30:41+01:00,7,6,0,0,0,0,0,0,0
@@ -1351,3 +1351,4 @@ timestamp,weekday,hour,areal,bazen,fitness,wellness,koupele,masaze,solarium
 2026-11-23T16:15:30+01:00,1,16,0,0,0,0,0,0,0
 2026-11-23T16:30:48+01:00,1,16,0,0,0,0,0,0,0
 2026-11-23T16:45:32+01:00,1,16,0,0,0,0,0,0,0
+2026-11-24T10:48:52+01:00,2,10,,12,2,15,,,,10:48,0
