@@ -2,7 +2,7 @@
 
 Sledování obsazenosti bazénu a wellness v [Městských lázních Nové Město na Moravě](https://lazne.nmnm.cz/).
 
-GitHub Actions workflow, spouštěný přes cron-job.org každých 15 minut (06:00–20:45 pražského času), stáhne tabulku návštěvnosti z `https://lazne.nmnm.cz/data/lazne/navstevnost-homepage.php` a připíše řádek do `data/YYYY-MM.csv`.
+GitHub Actions workflow, spouštěný přes cron-job.org každých 15 minut (06:00–20:45 pražského času), stáhne návštěvnost z `https://lazne.nmnm.cz/data/lazne/navstevnost-homepage.php` a připíše řádek do `data/YYYY-MM.csv`.
 
 ## Data
 
@@ -11,11 +11,13 @@ GitHub Actions workflow, spouštěný přes cron-job.org každých 15 minut (06:
 | `timestamp` | skutečný čas měření, Europe/Prague s offsetem |
 | `weekday` | 1 = pondělí … 7 = neděle |
 | `hour` | hodina měření (místní čas) |
-| `areal` | celý areál |
+| `areal` | celý areál — od 23.11.2026 web neukazuje, prázdné |
 | `bazen` | bazén |
 | `fitness` | fitness |
-| `wellness` | wellness (na webu „GWellness“) |
-| `koupele`, `masaze`, `solarium` | ostatní oblasti |
+| `wellness` | wellness |
+| `koupele`, `masaze`, `solarium` | ostatní oblasti — od 23.11.2026 web neukazuje, prázdné |
+| `stav` | čas „stav k“ z webu, kdy se počítadlo naposledy aktualizovalo (od 24.11.2026) |
+| `stale` | 1 = web označil čísla jako zastaralá (od 24.11.2026) |
 
 Hodnota je okamžitý počet lidí uvnitř. Mimo provozní dobu jsou nuly — filtrovat až při analýze (provozní doba se liší podle dne a sezóny, viz [Provozní doba](https://lazne.nmnm.cz/provozni-doba/)).
 
